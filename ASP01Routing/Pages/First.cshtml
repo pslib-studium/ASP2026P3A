@@ -4,6 +4,12 @@
 }
 <h1>My first page</h1>
 <p>@Model.Value</p>
+<p>
+    <a href="/first?handler=set&val=4">Set 4</a>
+    <a asp-page="First">first</a>
+    <a asp-page="Index">title</a>
+    <a asp-page="First" asp-page-handler="Set" asp-route-val="2">set 2</a>
+</p>
 <div>
     <img src="/img/christmas.jpg" alt="Scary cat" />
 </div>

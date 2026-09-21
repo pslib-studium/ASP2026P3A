@@ -1,0 +1,12 @@
+﻿@page
+@model ASP01Routing.Pages.SecondModel
+@{
+    <p>
+        <a asp-page-handler="Decrease" asp-route-value="@Model.Value">Decrease</a>
+        @Model.Value        
+        <a asp-page-handler="Increase" asp-route-value="@Model.Value">Increase</a>
+        <a asp-page-handler="Add" asp-route-value="@Model.Value" asp-route-change="5">
+            Add 5
+        </a>
+    </p>
+}
