@@ -14,9 +14,10 @@ namespace ASP01Routing.Pages
         {
         }
 
-        public void OnGetIncrease()
+        public IActionResult OnGetIncrease()
         {
             Value++;
+            return Page();
         }
         public void OnGetDecrease()
         {
