@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@using ASP02Razor.Models
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var human in Model.Humans)
+            {
+                <tr>
+                    <td>@human.HumanId</td>
+                    <td><a asp-page="./Detail" asp-route-name="@human.Name">@human.Name</a></td>
+                    <td>
+                        @if (human.Gender == Gender.Unknown)
+                        {
+                            <text>❓</text>
+                        }
+                        else if (human.Gender == Gender.Male)
+                        {
+                            <text>♂</text>
+                        }
+                        else if (human.Gender == Gender.Female)
+                        {
+                            <text>♀</text>
+                        }
+                        else if (human.Gender == Gender.Other)
+                        {
+                            <text>⚧</text>
+                        }
+                        else if (human.Gender == Gender.Whocares)
+                        {
+                            <text>🚫</text>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

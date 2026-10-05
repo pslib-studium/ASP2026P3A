@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="ASP01Routing/ASP01Routing.csproj" />
+  <Project Path="ASP02Razor/ASP02Razor.csproj" Id="f9b0b1bb-cb5a-4c57-ac43-01a1a50a8670" />
 </Solution>

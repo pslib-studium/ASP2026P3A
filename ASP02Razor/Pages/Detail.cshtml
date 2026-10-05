@@ -1,0 +1,14 @@
+﻿@page
+@model ASP02Razor.Pages.DetailModel
+@{
+}
+@if (string.IsNullOrEmpty(Model.Name))
+{
+    ViewData["Title"] = "?";
+    <div class="alert alert-danger">Chyba: Jméno nebylo zadáno</div>
+}
+else
+{
+    ViewData["Title"] = @Model.Name;
+   <div class="alert alert-info">Jméno: @Model.Name</div>
+}
