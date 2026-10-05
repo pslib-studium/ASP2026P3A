@@ -1,4 +1,5 @@
 using ASP02Razor.Models;
+using ASP02Razor.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -6,17 +7,22 @@ namespace ASP02Razor.Pages
 {
     public class IndexModel : PageModel
     {
-        public List<Human> Humans { get; set; } = new List<Human>
+        private readonly ILogger<IndexModel> _logger;
+        private readonly DataProviderService _dataProviderService;
+        public IndexModel(ILogger<IndexModel> logger, DataProviderService dataProviderService)
         {
-            new Human { HumanId = 1, Name = "Alice", Gender = Gender.Female },
-            new Human { HumanId = 2, Name = "Bob", Gender = Gender.Male },
-            new Human { HumanId = 3, Name = "Charlie", Gender = Gender.Other },
-            new Human { HumanId = 4, Name = "Dana", Gender = Gender.Unknown },
-            new Human { HumanId = 5, Name = "Eve", Gender = Gender.Whocares }
-        };
+            // služby připojené přes dependency injection
+            _logger = logger;
+            _dataProviderService = dataProviderService;
+            Text = _dataProviderService.Text.ToString();
+            Humans = _dataProviderService.Humans;
+        }
+
+        public string Text { get; set; }
+        public List<Human> Humans { get; set; }
         public void OnGet()
         {
-
+            _logger.LogDebug("Get");
         }
     }
 }
