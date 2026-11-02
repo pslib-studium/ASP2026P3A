@@ -23,9 +23,16 @@ namespace ASP03Db.Pages
         public void OnGet()
         {
             _logger.LogInformation("Index page accessed.");
-            Items = _context.Movies.ToList();
-            _logger.LogInformation("Retrieved {Count} movies from the database.", Items.Count);
-
+            try
+            {
+                Items = _context.Movies.ToList();
+                _logger.LogInformation("Retrieved {Count} movies from the database.", Items.Count);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving movies from the database.");
+                Items = new List<Movie>();
+            }
         }
     }
 }
