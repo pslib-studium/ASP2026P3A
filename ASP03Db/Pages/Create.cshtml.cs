@@ -7,10 +7,10 @@ namespace ASP03Db.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<CreateModel> _logger;
         private readonly MovieDbContext _context;
 
-        public CreateModel(ILogger<IndexModel> logger, MovieDbContext context)
+        public CreateModel(ILogger<CreateModel> logger, MovieDbContext context)
         {
             _logger = logger;
             _context = context;
@@ -21,6 +21,7 @@ namespace ASP03Db.Pages
 
         public void OnGet()
         {
+            _logger.LogInformation("Create page accessed.");
         }
 
         public IActionResult OnPost()
@@ -34,6 +35,7 @@ namespace ASP03Db.Pages
             {
                 _context.Movies.Add(Input!);
                 _context.SaveChanges();
+                _logger.LogDebug("Input: {@Input.Title}, {@Input.Year}, {@Input.Length}", Input!.Title, Input.Year, Input.Length);
                 _logger.LogInformation("Movie '{Title}' created successfully.", Input!.Title);
                 return RedirectToPage("/Index");
             }
